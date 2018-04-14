@@ -72,10 +72,13 @@ namespace TestSpeech
         private void LoadFile(string path)
         {
             textBoxFileName.Text = path;
-            if (Path.GetExtension(path).StartsWith(".doc"))
+            var extension = Path.GetExtension(path);
+            Cursor.Current = Cursors.WaitCursor;
+            if (extension.StartsWith(".doc") || extension==".odt")
                 LoadWordFile(path);
             else
                 richTextBox1.Text = File.ReadAllText(path, Encoding.Default);
+            Cursor.Current = Cursors.Default;
         }
 
 
