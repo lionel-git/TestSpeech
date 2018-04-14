@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.IO;
-
+using Microsoft.Office.Interop.Word;
 
 namespace TestSpeech
 {
     public partial class Form1 : Form
     {
         
-        SpeechSynthesizer _synth;
+        private SpeechSynthesizer _synth;
+
+        private List<string> _voices;
 
         public Form1()
         {
@@ -33,28 +35,37 @@ namespace TestSpeech
             this.DragEnter += new DragEventHandler(Form1_DragEnter);
             this.DragDrop += new DragEventHandler(Form1_DragDrop);
 
+            _voices = new List<string>();
+            _voices.AddRange(l.Select(x => 
+            $"{x.VoiceInfo.Name}# {x.VoiceInfo.Gender} {x.VoiceInfo.Culture}"));
+            comboBoxVoices.DataSource = _voices;
+            
             //  _synth.SelectVoiceByHints(VoiceGender.Male);
             //   _synth.SelectVoice("Microsoft Paul");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonRead_Click(object sender, EventArgs e)
         {
             var text=richTextBox1.SelectedText;
             if (string.IsNullOrEmpty(text))
                 text = richTextBox1.Text;
 
             _synth.Rate = trackBar1.Value;
+            _synth.SelectVoice(comboBoxVoices.Text.Split('#')[0]);
             var p = _synth.SpeakAsync(text);
         }
 
         private void LoadFile(string path)
         {
-            richTextBox1.Text = File.ReadAllText(path, Encoding.Default);
-            textBox1.Text = path;
+            textBoxFileName.Text = path;
+            if (Path.GetExtension(path).StartsWith(".doc"))
+                LoadWordFile(path);
+            else
+                richTextBox1.Text = File.ReadAllText(path, Encoding.Default);
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonOpenFile_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 LoadFile(openFileDialog1.FileName);
@@ -72,9 +83,20 @@ namespace TestSpeech
                 LoadFile(file);
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
         {
             _synth.SpeakAsyncCancelAll();
+        }
+
+        private void LoadWordFile(string path)
+        {
+           
+            var app = new Microsoft.Office.Interop.Word.Application();
+            Document doc = app.Documents.Open(path);
+            string words = doc.Content.Text;
+            doc.Close();
+            app.Quit();
+            richTextBox1.Text = words;
         }
     }
 }

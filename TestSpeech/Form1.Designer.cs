@@ -28,59 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRead = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonOpenFile = new System.Windows.Forms.Button();
+            this.textBoxFileName = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.comboBoxVoices = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonRead
             // 
-            this.button1.Location = new System.Drawing.Point(25, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Read";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRead.Location = new System.Drawing.Point(12, 12);
+            this.buttonRead.Name = "buttonRead";
+            this.buttonRead.Size = new System.Drawing.Size(75, 23);
+            this.buttonRead.TabIndex = 0;
+            this.buttonRead.Text = "Read";
+            this.buttonRead.UseVisualStyleBackColor = true;
+            this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button2
+            // buttonOpenFile
             // 
-            this.button2.Location = new System.Drawing.Point(133, 26);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Open File...";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonOpenFile.Location = new System.Drawing.Point(93, 12);
+            this.buttonOpenFile.Name = "buttonOpenFile";
+            this.buttonOpenFile.Size = new System.Drawing.Size(75, 23);
+            this.buttonOpenFile.TabIndex = 1;
+            this.buttonOpenFile.Text = "Open File...";
+            this.buttonOpenFile.UseVisualStyleBackColor = true;
+            this.buttonOpenFile.Click += new System.EventHandler(this.buttonOpenFile_Click);
             // 
-            // textBox1
+            // textBoxFileName
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(506, 20);
-            this.textBox1.TabIndex = 2;
+            this.textBoxFileName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxFileName.Location = new System.Drawing.Point(12, 73);
+            this.textBoxFileName.Name = "textBoxFileName";
+            this.textBoxFileName.ReadOnly = true;
+            this.textBoxFileName.Size = new System.Drawing.Size(514, 20);
+            this.textBoxFileName.TabIndex = 2;
             // 
             // richTextBox1
             // 
+            this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 99);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(506, 273);
+            this.richTextBox1.Size = new System.Drawing.Size(514, 292);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
             // trackBar1
             // 
+            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBar1.Location = new System.Drawing.Point(392, 12);
             this.trackBar1.Minimum = -10;
             this.trackBar1.Name = "trackBar1";
@@ -96,28 +103,37 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Speed";
             // 
-            // button3
+            // buttonCancel
             // 
-            this.button3.Location = new System.Drawing.Point(248, 26);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonCancel.Location = new System.Drawing.Point(174, 12);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 6;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // comboBoxVoices
+            // 
+            this.comboBoxVoices.FormattingEnabled = true;
+            this.comboBoxVoices.Location = new System.Drawing.Point(12, 41);
+            this.comboBoxVoices.Name = "comboBoxVoices";
+            this.comboBoxVoices.Size = new System.Drawing.Size(298, 21);
+            this.comboBoxVoices.TabIndex = 7;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 384);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(538, 403);
+            this.Controls.Add(this.comboBoxVoices);
+            this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.textBoxFileName);
+            this.Controls.Add(this.buttonOpenFile);
+            this.Controls.Add(this.buttonRead);
             this.Name = "Form1";
             this.Text = "Speech";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
@@ -128,14 +144,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRead;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button buttonOpenFile;
+        private System.Windows.Forms.TextBox textBoxFileName;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.ComboBox comboBoxVoices;
     }
 }
 
