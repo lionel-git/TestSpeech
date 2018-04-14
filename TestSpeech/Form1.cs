@@ -57,6 +57,7 @@ namespace TestSpeech
                     text = text.Substring(richTextBox1.SelectionStart, text.Length - richTextBox1.SelectionStart);
             }
 
+
             if (string.IsNullOrEmpty(text))
             {
                 MessageBox.Show("No text selected", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
