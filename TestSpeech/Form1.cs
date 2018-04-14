@@ -24,6 +24,7 @@ namespace TestSpeech
         public Form1()
         {
             InitializeComponent();
+
             // Initialize a new instance of the SpeechSynthesizer.
             _synth = new SpeechSynthesizer();
             // Configure the audio output. 
@@ -45,6 +46,7 @@ namespace TestSpeech
             //   _synth.SelectVoice("Microsoft Paul");
         }
 
+
         private void buttonRead_Click(object sender, EventArgs e)
         {
             var text=richTextBox1.SelectedText;
@@ -55,10 +57,16 @@ namespace TestSpeech
                     text = text.Substring(richTextBox1.SelectionStart, text.Length - richTextBox1.SelectionStart);
             }
 
-
-            _synth.Rate = trackBar1.Value;
-            _synth.SelectVoice(comboBoxVoices.Text.Split('#')[0]);
-            _prompt = _synth.SpeakAsync(text);
+            if (string.IsNullOrEmpty(text))
+            {
+                MessageBox.Show("No text selected", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                _synth.Rate = trackBar1.Value;
+                _synth.SelectVoice(comboBoxVoices.Text.Split('#')[0]);
+                _prompt = _synth.SpeakAsync(text);
+            }
         }
 
         private void LoadFile(string path)
