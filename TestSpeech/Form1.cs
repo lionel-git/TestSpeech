@@ -19,6 +19,8 @@ namespace TestSpeech
         private SpeechSynthesizer _synth;
         private Prompt _prompt;
 
+        private Microsoft.Office.Interop.Word.Application _wordApp;
+
         private List<string> _voices;
 
         public Form1()
@@ -41,9 +43,12 @@ namespace TestSpeech
             _voices.AddRange(l.Select(x => 
             $"{x.VoiceInfo.Name}# {x.VoiceInfo.Gender} {x.VoiceInfo.Culture}"));
             comboBoxVoices.DataSource = _voices;
-            
-            //  _synth.SelectVoiceByHints(VoiceGender.Male);
-            //   _synth.SelectVoice("Microsoft Paul");
+
+            var wordVersion = IsWordInteropInstalled();
+            if (wordVersion != null)
+                toolStripStatusLabel1.Text = $"Word interpop found: {wordVersion}";
+            else
+                toolStripStatusLabel1.Text = "Word interop not found";
         }
 
 
@@ -107,12 +112,14 @@ namespace TestSpeech
 
         private void LoadWordFile(string path)
         {
-           
-            var app = new Microsoft.Office.Interop.Word.Application();
-            Document doc = app.Documents.Open(path);
+            if (_wordApp == null)
+            {
+                _wordApp = new Microsoft.Office.Interop.Word.Application();
+                toolStripStatusLabel2.Text = $"Word version: {_wordApp.Build}";
+            }
+            Document doc = _wordApp.Documents.Open(path);
             string words = doc.Content.Text;
             doc.Close();
-            app.Quit();
             richTextBox1.Text = words;
         }
 
@@ -127,6 +134,17 @@ namespace TestSpeech
                     _synth.Pause();
                     break;
             }
+        }
+
+        private static string IsWordInteropInstalled()
+        {
+            Type officeType = Type.GetTypeFromProgID("Word.Application");
+            if (officeType != null)
+            {
+                return $"{officeType.Assembly.FullName}";
+            }
+            else
+                return null;
         }
     }
 }

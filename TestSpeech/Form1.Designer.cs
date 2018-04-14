@@ -40,7 +40,11 @@
             this.comboBoxVoices = new System.Windows.Forms.ComboBox();
             this.checkBoxFromCursor = new System.Windows.Forms.CheckBox();
             this.buttonPauseResume = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonRead
@@ -74,7 +78,7 @@
             this.textBoxFileName.Location = new System.Drawing.Point(12, 73);
             this.textBoxFileName.Name = "textBoxFileName";
             this.textBoxFileName.ReadOnly = true;
-            this.textBoxFileName.Size = new System.Drawing.Size(570, 20);
+            this.textBoxFileName.Size = new System.Drawing.Size(832, 20);
             this.textBoxFileName.TabIndex = 2;
             // 
             // richTextBox1
@@ -84,14 +88,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 99);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(570, 292);
+            this.richTextBox1.Size = new System.Drawing.Size(832, 437);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
             // trackBar1
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(456, 12);
+            this.trackBar1.Location = new System.Drawing.Point(718, 12);
             this.trackBar1.Minimum = -10;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(126, 45);
@@ -101,7 +105,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(412, 20);
+            this.label1.Location = new System.Drawing.Point(674, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 5;
@@ -110,7 +114,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonCancel.Location = new System.Drawing.Point(415, 45);
+            this.buttonCancel.Location = new System.Drawing.Point(677, 45);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 6;
@@ -139,7 +143,7 @@
             // buttonPauseResume
             // 
             this.buttonPauseResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPauseResume.Location = new System.Drawing.Point(301, 45);
+            this.buttonPauseResume.Location = new System.Drawing.Point(563, 45);
             this.buttonPauseResume.Name = "buttonPauseResume";
             this.buttonPauseResume.Size = new System.Drawing.Size(108, 23);
             this.buttonPauseResume.TabIndex = 9;
@@ -147,11 +151,35 @@
             this.buttonPauseResume.UseVisualStyleBackColor = true;
             this.buttonPauseResume.Click += new System.EventHandler(this.buttonPauseResume_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel2});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 550);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(856, 22);
+            this.statusStrip1.TabIndex = 10;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(96, 17);
+            this.toolStripStatusLabel2.Text = "Word not loaded";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 403);
+            this.ClientSize = new System.Drawing.Size(856, 572);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.buttonPauseResume);
             this.Controls.Add(this.checkBoxFromCursor);
             this.Controls.Add(this.comboBoxVoices);
@@ -166,6 +194,8 @@
             this.Name = "Form1";
             this.Text = "Speech";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,6 +214,9 @@
         private System.Windows.Forms.ComboBox comboBoxVoices;
         private System.Windows.Forms.CheckBox checkBoxFromCursor;
         private System.Windows.Forms.Button buttonPauseResume;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
     }
 }
 
