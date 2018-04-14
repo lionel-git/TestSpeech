@@ -37,12 +37,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.comboBoxVoices = new System.Windows.Forms.ComboBox();
+            this.checkBoxFromCursor = new System.Windows.Forms.CheckBox();
+            this.buttonPauseResume = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRead
             // 
-            this.buttonRead.Location = new System.Drawing.Point(12, 12);
+            this.buttonRead.Location = new System.Drawing.Point(93, 44);
             this.buttonRead.Name = "buttonRead";
             this.buttonRead.Size = new System.Drawing.Size(75, 23);
             this.buttonRead.TabIndex = 0;
@@ -56,7 +58,7 @@
             // 
             // buttonOpenFile
             // 
-            this.buttonOpenFile.Location = new System.Drawing.Point(93, 12);
+            this.buttonOpenFile.Location = new System.Drawing.Point(12, 44);
             this.buttonOpenFile.Name = "buttonOpenFile";
             this.buttonOpenFile.Size = new System.Drawing.Size(75, 23);
             this.buttonOpenFile.TabIndex = 1;
@@ -71,7 +73,7 @@
             this.textBoxFileName.Location = new System.Drawing.Point(12, 73);
             this.textBoxFileName.Name = "textBoxFileName";
             this.textBoxFileName.ReadOnly = true;
-            this.textBoxFileName.Size = new System.Drawing.Size(514, 20);
+            this.textBoxFileName.Size = new System.Drawing.Size(570, 20);
             this.textBoxFileName.TabIndex = 2;
             // 
             // richTextBox1
@@ -81,14 +83,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.richTextBox1.Location = new System.Drawing.Point(12, 99);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(514, 292);
+            this.richTextBox1.Size = new System.Drawing.Size(570, 292);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             // 
             // trackBar1
             // 
             this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(392, 12);
+            this.trackBar1.Location = new System.Drawing.Point(456, 12);
             this.trackBar1.Minimum = -10;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(126, 45);
@@ -96,8 +98,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(348, 26);
+            this.label1.Location = new System.Drawing.Point(412, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 13);
             this.label1.TabIndex = 5;
@@ -105,27 +108,51 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(174, 12);
+            this.buttonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonCancel.Location = new System.Drawing.Point(415, 45);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 6;
-            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.Text = "Stop";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // comboBoxVoices
             // 
             this.comboBoxVoices.FormattingEnabled = true;
-            this.comboBoxVoices.Location = new System.Drawing.Point(12, 41);
+            this.comboBoxVoices.Location = new System.Drawing.Point(12, 12);
             this.comboBoxVoices.Name = "comboBoxVoices";
             this.comboBoxVoices.Size = new System.Drawing.Size(298, 21);
             this.comboBoxVoices.TabIndex = 7;
+            // 
+            // checkBoxFromCursor
+            // 
+            this.checkBoxFromCursor.AutoSize = true;
+            this.checkBoxFromCursor.Location = new System.Drawing.Point(175, 49);
+            this.checkBoxFromCursor.Name = "checkBoxFromCursor";
+            this.checkBoxFromCursor.Size = new System.Drawing.Size(82, 17);
+            this.checkBoxFromCursor.TabIndex = 8;
+            this.checkBoxFromCursor.Text = "From Cursor";
+            this.checkBoxFromCursor.UseVisualStyleBackColor = true;
+            // 
+            // buttonPauseResume
+            // 
+            this.buttonPauseResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPauseResume.Location = new System.Drawing.Point(301, 45);
+            this.buttonPauseResume.Name = "buttonPauseResume";
+            this.buttonPauseResume.Size = new System.Drawing.Size(108, 23);
+            this.buttonPauseResume.TabIndex = 9;
+            this.buttonPauseResume.Text = "Pause/Resume";
+            this.buttonPauseResume.UseVisualStyleBackColor = true;
+            this.buttonPauseResume.Click += new System.EventHandler(this.buttonPauseResume_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 403);
+            this.ClientSize = new System.Drawing.Size(594, 403);
+            this.Controls.Add(this.buttonPauseResume);
+            this.Controls.Add(this.checkBoxFromCursor);
             this.Controls.Add(this.comboBoxVoices);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label1);
@@ -153,6 +180,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.ComboBox comboBoxVoices;
+        private System.Windows.Forms.CheckBox checkBoxFromCursor;
+        private System.Windows.Forms.Button buttonPauseResume;
     }
 }
 

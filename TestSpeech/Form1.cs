@@ -17,6 +17,7 @@ namespace TestSpeech
     {
         
         private SpeechSynthesizer _synth;
+        private Prompt _prompt;
 
         private List<string> _voices;
 
@@ -48,11 +49,16 @@ namespace TestSpeech
         {
             var text=richTextBox1.SelectedText;
             if (string.IsNullOrEmpty(text))
+            {
                 text = richTextBox1.Text;
+                if (checkBoxFromCursor.Checked)
+                    text = text.Substring(richTextBox1.SelectionStart, text.Length - richTextBox1.SelectionStart);
+            }
+
 
             _synth.Rate = trackBar1.Value;
             _synth.SelectVoice(comboBoxVoices.Text.Split('#')[0]);
-            var p = _synth.SpeakAsync(text);
+            _prompt = _synth.SpeakAsync(text);
         }
 
         private void LoadFile(string path)
@@ -97,6 +103,19 @@ namespace TestSpeech
             doc.Close();
             app.Quit();
             richTextBox1.Text = words;
+        }
+
+        private void buttonPauseResume_Click(object sender, EventArgs e)
+        {
+            switch (_synth.State)
+            {
+                case SynthesizerState.Paused:
+                    _synth.Resume();
+                    break;
+                case SynthesizerState.Speaking:
+                    _synth.Pause();
+                    break;
+            }
         }
     }
 }
