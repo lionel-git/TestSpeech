@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Speech.Synthesis;
 using System.IO;
 using Microsoft.Office.Interop.Word;
+using System.Reflection;
 
 namespace TestSpeech
 {
@@ -48,7 +49,9 @@ namespace TestSpeech
             if (wordVersion != null)
                 toolStripStatusLabel1.Text = $"Word interpop found: {wordVersion}";
             else
-                toolStripStatusLabel1.Text = "Word interop not found";
+                toolStripStatusLabel1.Text = "Warning: Word interop not found";
+
+            Text = $"Test Speech {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
         }
 
 
@@ -145,6 +148,12 @@ namespace TestSpeech
             }
             else
                 return null;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_wordApp != null)
+                _wordApp.Quit();
         }
     }
 }
