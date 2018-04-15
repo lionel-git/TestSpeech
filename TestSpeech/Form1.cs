@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Speech.Synthesis;
 using System.IO;
 using Microsoft.Office.Interop.Word;
 using System.Reflection;
