@@ -52,6 +52,8 @@ namespace TestSpeech
                 toolStripStatusLabel1.Text = "Warning: Word interop not found";
 
             Text = $"Test Speech {Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
+
+           // notifyIcon1.ContextMenu = contextMenuStrip1;
         }
 
 
