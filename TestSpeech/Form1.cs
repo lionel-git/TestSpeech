@@ -11,14 +11,14 @@ using System.Speech.Synthesis;
 using System.IO;
 using Microsoft.Office.Interop.Word;
 using System.Reflection;
+using SpeechSynthesis = System.Speech.Synthesis; // or  Microsoft.Speech.Synthesis
 
 namespace TestSpeech
 {
     public partial class Form1 : Form
     {
-        
-        private SpeechSynthesizer _synth;
-        private Prompt _prompt;
+        private SpeechSynthesis.SpeechSynthesizer _synth;
+        private SpeechSynthesis.Prompt _prompt;
 
         private Microsoft.Office.Interop.Word.Application _wordApp;
 
@@ -29,19 +29,18 @@ namespace TestSpeech
             InitializeComponent();
 
             // Initialize a new instance of the SpeechSynthesizer.
-            _synth = new SpeechSynthesizer();
+            _synth = new SpeechSynthesis.SpeechSynthesizer();
             // Configure the audio output. 
             _synth.SetOutputToDefaultAudioDevice();
 
-
-            var l=_synth.GetInstalledVoices();
+            var installedVoices =_synth.GetInstalledVoices();
 
             this.AllowDrop = true;
             this.DragEnter += new DragEventHandler(Form1_DragEnter);
             this.DragDrop += new DragEventHandler(Form1_DragDrop);
 
             _voices = new List<string>();
-            _voices.AddRange(l.Select(x => 
+            _voices.AddRange(installedVoices.Select(x => 
             $"{x.VoiceInfo.Name}# {x.VoiceInfo.Gender} {x.VoiceInfo.Culture}"));
             comboBoxVoices.DataSource = _voices;
 
@@ -132,10 +131,10 @@ namespace TestSpeech
         {
             switch (_synth.State)
             {
-                case SynthesizerState.Paused:
+                case SpeechSynthesis.SynthesizerState.Paused:
                     _synth.Resume();
                     break;
-                case SynthesizerState.Speaking:
+                case SpeechSynthesis.SynthesizerState.Speaking:
                     _synth.Pause();
                     break;
             }
