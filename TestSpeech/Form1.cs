@@ -153,7 +153,14 @@ namespace TestSpeech
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (_wordApp != null)
-                _wordApp.Quit();
+                try
+                {
+                    _wordApp.Quit();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Closing word failed\n{ex}", "warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
         }
     }
 }
