@@ -10,6 +10,9 @@ using System.Windows.Forms;
 using System.IO;
 using Microsoft.Office.Interop.Word;
 using System.Reflection;
+using iTextSharp.text.pdf;
+
+
 using SpeechSynthesis = System.Speech.Synthesis; // or  Microsoft.Speech.Synthesis
 
 namespace TestSpeech
@@ -84,11 +87,10 @@ namespace TestSpeech
             Cursor.Current = Cursors.WaitCursor;
             if (extension.StartsWith(".doc") || extension==".odt")
                 LoadWordFile(path);
-            else
-                richTextBox1.Text = File.ReadAllText(path, Encoding.Default);
+            else if (extension == ".pdf")
+                LoadPdfFile(path);
             Cursor.Current = Cursors.Default;
         }
-
 
         private void buttonOpenFile_Click(object sender, EventArgs e)
         {
@@ -124,6 +126,18 @@ namespace TestSpeech
             string words = doc.Content.Text;
             doc.Close();
             richTextBox1.Text = words;
+        }
+
+        private void LoadPdfFile(string path)
+        {
+            PdfReader reader = new PdfReader(path);
+            string text = string.Empty;
+            for (int page = 1; page <= reader.NumberOfPages; page++)
+            {
+                text += iTextSharp.text.pdf.parser.PdfTextExtractor.GetTextFromPage(reader, page);
+            }
+            reader.Close();
+            richTextBox1.Text = text;
         }
 
         private void buttonPauseResume_Click(object sender, EventArgs e)
